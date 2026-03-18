@@ -1,0 +1,206 @@
+<!-- guards: core/color, core/interaction, core/layout, core/typography -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicago Sound & Backline — Professional Sound, Backline Rentals & Production</title>
+<meta name="description" content="Professional sound reinforcement, backline equipment rentals, lighting, recording & AV services throughout Chicago and the Midwest. Owner-operated by Mike Bruno.">
+<style>
+:root {
+  --surface-base: #faf8f5; --surface-card: #ffffff; --surface-muted: #f4f1eb;
+  --surface-dark: #1e1b18; --surface-dark-mid: #2c2824;
+  --text-primary: #2c2824; --text-secondary: #5c5650; --text-muted: #9a938c;
+  --text-inverse: #f5f2ed; --text-inverse-dim: #c8c0b5;
+  --accent: #e8733a; --accent-dim: #c45e28; --accent-soft: rgba(232,115,58,0.10);
+  --border: rgba(44,40,36,0.08); --border-strong: rgba(44,40,36,0.14);
+  --shadow-sm: 0 1px 3px hsla(25,40%,30%,0.06); --shadow-md: 0 4px 12px hsla(25,40%,30%,0.09);
+  --radius: 10px; --radius-sm: 6px;
+  --font-body: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  --font-display: 'Source Serif 4', Georgia, serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--surface-base); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+nav { position: sticky; top: 0; z-index: 100; background: var(--surface-dark); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-brand { color: var(--text-inverse); font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; text-decoration: none; }
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links a { color: var(--text-inverse-dim); text-decoration: none; padding: 0.5rem 0.875rem; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; transition: all 0.15s; }
+.nav-links a:hover { color: var(--text-inverse); background: rgba(255,255,255,0.08); }
+.nav-cta { background: var(--accent) !important; color: var(--text-inverse) !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--accent-dim) !important; }
+.nav-mobile { display: none; background: none; border: none; color: var(--text-inverse); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; min-height: 44px; min-width: 44px; }
+.hero { background: var(--surface-dark); padding: 6rem 2rem 5rem; text-align: center; }
+.hero h1 { font-family: var(--font-display); color: var(--text-inverse); font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.15; max-width: 700px; margin: 0 auto 1.25rem; letter-spacing: -0.02em; }
+.hero p { color: var(--text-inverse-dim); font-size: 1.15rem; max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.65; }
+.hero-cta { display: inline-flex; align-items: center; background: var(--accent); color: white; padding: 0.875rem 2rem; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: background 0.15s; min-height: 48px; }
+.hero-cta:hover { background: var(--accent-dim); }
+.hero-sub { color: var(--text-inverse-dim); font-size: 0.85rem; margin-top: 1rem; opacity: 0.7; }
+section { padding: 5rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.75rem; }
+.section-title { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.015em; }
+.section-desc { color: var(--text-secondary); font-size: 1.05rem; max-width: 640px; line-height: 1.65; margin-bottom: 3rem; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.service-card { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, transform 0.2s; }
+.service-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.service-icon { width: 48px; height: 48px; background: var(--accent-soft); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.5rem; }
+.service-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; }
+.service-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+.packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.package-card { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem 2rem; box-shadow: var(--shadow-sm); position: relative; }
+.package-card.featured { border-color: var(--accent); box-shadow: var(--shadow-md); }
+.package-badge { position: absolute; top: -12px; left: 2rem; background: var(--accent); color: white; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.package-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.25rem; }
+.package-list { list-style: none; }
+.package-list li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-secondary); font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+.package-list li:last-child { border-bottom: none; }
+.package-list li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; opacity: 0.6; }
+.brand-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.brand-tag { background: var(--surface-card); border: 1px solid var(--border); padding: 0.4rem 0.875rem; border-radius: 100px; font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+.client-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.client-tag { background: var(--accent-soft); border: 1px solid rgba(232,115,58,0.15); padding: 0.4rem 0.875rem; border-radius: 100px; font-size: 0.85rem; color: var(--accent-dim); font-weight: 500; }
+.about-section { background: var(--surface-dark); color: var(--text-inverse); }
+.about-section .section-desc { color: var(--text-inverse-dim); }
+.about-section .section-label { color: var(--accent); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.25rem; }
+.contact-item-icon { width: 36px; height: 36px; background: var(--accent-soft); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+.contact-item-text { font-size: 0.95rem; }
+.contact-item-text a { color: var(--accent); text-decoration: none; }
+.contact-item-text a:hover { text-decoration: underline; }
+.contact-item-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.15rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-group label { font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); }
+.form-group input, .form-group textarea, .form-group select { padding: 0.75rem 1rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; background: var(--surface-card); transition: border-color 0.15s; min-height: 44px; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.btn-submit { background: var(--accent); color: white; border: none; padding: 0.875rem 2rem; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: background 0.15s; min-height: 48px; }
+.btn-submit:hover { background: var(--accent-dim); }
+footer { background: var(--surface-dark); color: var(--text-inverse-dim); padding: 3rem 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { font-family: var(--font-display); color: var(--text-inverse); font-weight: 600; font-size: 1.1rem; }
+.footer-brand span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { color: var(--text-inverse-dim); text-decoration: none; font-size: 0.9rem; }
+.footer-links a:hover { color: var(--text-inverse); }
+.footer-copy { font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; text-align: center; }
+@media (max-width: 768px) { .nav-links { display: none; } .nav-mobile { display: block; } .contact-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } section { padding: 3rem 1.25rem; } .hero { padding: 4rem 1.25rem 3rem; } .footer-inner { flex-direction: column; gap: 1rem; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+  <a href="#" class="nav-brand">Chicago Sound <span>&amp;</span> Backline</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#gear">Gear</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-mobile" aria-label="Open navigation menu">&#9776;</button>
+</nav>
+<section class="hero">
+  <h1>Professional Sound &amp; Backline for Chicago and the Midwest</h1>
+  <p>Full-service sound reinforcement, backline rentals, lighting, recording, and AV production. Owner-operated by Mike Bruno with over two decades of expertise.</p>
+  <a href="#contact" class="hero-cta">Get a Quote</a>
+  <p class="hero-sub">Weddings &middot; Corporate Events &middot; Festivals &middot; Concerts &middot; Private Parties</p>
+</section>
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Full-Service Production</h2>
+    <p class="section-desc">From intimate events for 5 people to large-scale festivals for 5,000+. We handle sound, backline, AV, lighting, recording, and live streaming.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#127908;</div><h3>Live Sound</h3><p>Professional sound reinforcement for any size event. Full mixing, processing, and speaker deployment with premium Meyer Sound, L'Acoustics, and QSC systems.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#127928;</div><h3>Backline</h3><p>Extensive inventory of professional drums, keyboards, guitars, amps, and percussion. Vintage and modern gear from top brands, maintained and stage-ready.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#127909;</div><h3>AV &amp; Production</h3><p>Projectors, screens, video switching, multi-camera live streaming, and lighting. Full production support for corporate events and galas.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#127897;</div><h3>Recording</h3><p>Pro Tools-based recording services for live events and studio sessions. Multi-track capture with professional microphones and outboard processing.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#128225;</div><h3>Wireless &amp; IEM</h3><p>Shure ULXD and QLXD wireless systems with up to 24 channels. PSM 1000 and PSM 900 in-ear monitor systems for professional monitoring.</p></div>
+      <div class="service-card"><div class="service-icon" aria-hidden="true">&#128230;</div><h3>Dry Rentals</h3><p>Need gear without crew? Plug-and-play rental packages with delivery and pickup. Daily, weekly, and flexible terms.</p></div>
+    </div>
+  </div>
+</section>
+<section id="packages" style="background: var(--surface-muted);">
+  <div class="section-inner">
+    <p class="section-label">Sound Packages</p>
+    <h2 class="section-title">Packages for Every Event</h2>
+    <p class="section-desc">Customized sound solutions starting from these foundations. Every event is different &mdash; we tailor the setup to your needs.</p>
+    <div class="packages-grid">
+      <div class="package-card"><h3>Standard</h3><ul class="package-list"><li>16-channel mixer with FX and processing</li><li>1,000W powered subwoofer</li><li>2x 1,000W powered main speakers</li><li>2-3 powered monitor mixes</li><li>Up to 5 wired microphones (SM57/SM58)</li><li>4 DI boxes, stands, and cables</li></ul></div>
+      <div class="package-card featured"><div class="package-badge">Most Popular</div><h3>Full System</h3><ul class="package-list"><li>32-channel mixer with full FX processing</li><li>2x 1,000W subwoofers</li><li>Main speaker array</li><li>5 powered monitor mixes</li><li>Full instrument and vocal mic suite</li><li>Up to 4 wireless vocal microphones</li><li>2 wireless in-ear monitor systems</li><li>LED Par lighting trees</li></ul></div>
+      <div class="package-card"><h3>DJ Package</h3><ul class="package-list"><li>High-fidelity sound system</li><li>Subwoofer(s) sized to venue</li><li>LED lighting package</li><li>Wireless microphone for announcements</li><li>Setup and strike included</li><li>Contact for custom configurations</li></ul></div>
+    </div>
+  </div>
+</section>
+<section id="gear">
+  <div class="section-inner">
+    <p class="section-label">Our Inventory</p>
+    <h2 class="section-title">324 Pieces of Professional Gear</h2>
+    <p class="section-desc">Top brands maintained to professional standards. From vintage Slingerland drum kits to L'Acoustics line arrays.</p>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-secondary)">Consoles &amp; Mixers</h3>
+    <div class="brand-grid" style="margin-bottom:2rem"><span class="brand-tag">Allen &amp; Heath dLive</span><span class="brand-tag">Allen &amp; Heath SQ</span><span class="brand-tag">Allen &amp; Heath CQ</span><span class="brand-tag">Midas M32</span><span class="brand-tag">Behringer X32</span><span class="brand-tag">QSC TouchMix</span><span class="brand-tag">Mackie ProFX</span><span class="brand-tag">Yamaha</span></div>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-secondary)">Speakers &amp; PA</h3>
+    <div class="brand-grid" style="margin-bottom:2rem"><span class="brand-tag">L'Acoustics Syva</span><span class="brand-tag">Meyer Sound</span><span class="brand-tag">QSC K / KW / KS</span><span class="brand-tag">RCF J8</span><span class="brand-tag">JBL EON</span><span class="brand-tag">EV Evolve</span><span class="brand-tag">Bose L1</span></div>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-secondary)">Wireless &amp; Monitoring</h3>
+    <div class="brand-grid" style="margin-bottom:2rem"><span class="brand-tag">Shure ULXD (24 ch)</span><span class="brand-tag">Shure QLXD</span><span class="brand-tag">Shure SLXD</span><span class="brand-tag">Shure PSM 1000</span><span class="brand-tag">Shure PSM 900</span><span class="brand-tag">RF Venue</span></div>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-secondary)">Backline</h3>
+    <div class="brand-grid" style="margin-bottom:2rem"><span class="brand-tag">Nord</span><span class="brand-tag">Yamaha</span><span class="brand-tag">Roland</span><span class="brand-tag">Moog</span><span class="brand-tag">Fender</span><span class="brand-tag">Marshall</span><span class="brand-tag">Vox</span><span class="brand-tag">Ampeg</span><span class="brand-tag">Aguilar</span><span class="brand-tag">Gibson</span><span class="brand-tag">Taylor</span><span class="brand-tag">Martin</span><span class="brand-tag">DW</span><span class="brand-tag">Tama</span><span class="brand-tag">Pearl</span><span class="brand-tag">Ludwig</span><span class="brand-tag">Gretsch</span><span class="brand-tag">Pioneer</span><span class="brand-tag">Technics</span></div>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-secondary)">Microphones</h3>
+    <div class="brand-grid"><span class="brand-tag">Shure</span><span class="brand-tag">Sennheiser</span><span class="brand-tag">DPA</span><span class="brand-tag">Telefunken</span><span class="brand-tag">AKG</span><span class="brand-tag">Beyerdynamic</span><span class="brand-tag">Neumann</span><span class="brand-tag">Royer</span><span class="brand-tag">Oktava</span><span class="brand-tag">Rode</span><span class="brand-tag">Countryman</span></div>
+  </div>
+</section>
+<section id="about" class="about-section">
+  <div class="section-inner">
+    <p class="section-label">About CSB</p>
+    <h2 class="section-title" style="color:var(--text-inverse)">Owner-Operated. Two Decades of Expertise.</h2>
+    <p class="section-desc">Mike Bruno is a seasoned sound engineer and professional musician who brings over twenty years of experience to every event. CSB is your go-to provider for professional sound reinforcement and backline equipment services throughout Chicago and the Midwest.</p>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-inverse-dim);margin-top:2.5rem">Artists We've Worked With</h3>
+    <div class="client-grid"><span class="client-tag">Lizzo</span><span class="client-tag">Al Green</span><span class="client-tag">Flo Rida</span><span class="client-tag">Jon Brion</span><span class="client-tag">Kenny Garrett</span><span class="client-tag">Kurt Elling</span><span class="client-tag">Dee Dee Bridgewater</span><span class="client-tag">Fred Hammond</span></div>
+    <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;color:var(--text-inverse-dim);margin-top:1.5rem">Regular Clients &amp; Venues</h3>
+    <div class="client-grid"><span class="client-tag">Chicago Jazz Festival</span><span class="client-tag">Jazz Institute of Chicago</span><span class="client-tag">City Club of Chicago</span><span class="client-tag">Aragon Ballroom</span><span class="client-tag">DePaul University</span><span class="client-tag">University of Chicago</span><span class="client-tag">Navy Pier</span></div>
+  </div>
+</section>
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Get a Quote</h2>
+    <p class="section-desc">Tell us about your event and we'll put together a custom quote. Email riders or detailed requests directly if you prefer.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item"><div class="contact-item-icon" aria-hidden="true">&#128222;</div><div class="contact-item-text"><div class="contact-item-label">Phone / Text</div><a href="tel:7733697278">773-369-7278</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon" aria-hidden="true">&#9993;</div><div class="contact-item-text"><div class="contact-item-label">Email</div><a href="mailto:soundandbackline@gmail.com">soundandbackline@gmail.com</a></div></div>
+        <div class="contact-item"><div class="contact-item-icon" aria-hidden="true">&#128205;</div><div class="contact-item-text"><div class="contact-item-label">Location</div>Berkshire St &amp; Ridgeland Ave<br>Oak Park, IL 60302<br><span style="color:var(--text-muted);font-size:0.85rem">By appointment</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon" aria-hidden="true">&#128247;</div><div class="contact-item-text"><div class="contact-item-label">Social</div><a href="https://www.instagram.com/soundandbackline" target="_blank" rel="noopener">@soundandbackline</a></div></div>
+      </div>
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group"><label for="cn">Name</label><input type="text" id="cn" name="name" required placeholder="Your name" aria-label="Your name"></div>
+          <div class="form-group"><label for="ce">Email</label><input type="email" id="ce" name="email" required placeholder="you@example.com" aria-label="Your email"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="ct">Event Type</label><select id="ct" name="event-type" aria-label="Event type"><option value="">Select...</option><option>Wedding</option><option>Corporate Event</option><option>Festival / Concert</option><option>Private Party</option><option>Dry Rental</option><option>Recording</option><option>Other</option></select></div>
+          <div class="form-group"><label for="cd">Event Date</label><input type="date" id="cd" name="event-date" aria-label="Event date"></div>
+        </div>
+        <div class="form-group"><label for="cm">Tell us about your event</label><textarea id="cm" name="details" placeholder="Venue, guest count, band size, what gear you need..." aria-label="Event details"></textarea></div>
+        <button type="submit" class="btn-submit">Send Quote Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Chicago Sound <span>&amp;</span> Backline</div>
+    <div class="footer-links"><a href="#services">Services</a><a href="#packages">Packages</a><a href="#gear">Gear</a><a href="#about">About</a><a href="#contact">Contact</a><a href="https://www.instagram.com/soundandbackline" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/soundandbackline" target="_blank" rel="noopener">Facebook</a></div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Chicago Sound &amp; Backline. Oak Park, IL.</p>
+</footer>
+<script src="form-handler.js"></script>
+</body>
+</html>
