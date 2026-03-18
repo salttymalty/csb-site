@@ -3,8 +3,8 @@
 
 // Configure after deploy:
 const WORKER_URL = 'https://csb-notify.garenhudson.workers.dev';
-const SUPABASE_URL = ''; // e.g. https://xxxxx.supabase.co
-const SUPABASE_ANON_KEY = ''; // public anon key
+const SUPABASE_URL = 'https://lnicydkhiuzatcwgfwtt.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxuaWN5ZGtoaXV6YXRjd2dmd3R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjUxMzgsImV4cCI6MjA4OTIwMTEzOH0.hRudIkq3h5TxhnRAS9XRDVZ5RVvspogEt273Yw3R3-o';
 
 var PITD_LABELS = ['Chill', 'Some coordination', 'Wedding-level stress'];
 
