@@ -1,14 +1,8 @@
 # CSB Site — Setup for Demo
 
-## 1. Twilio (SMS notifications) — 5 min
+## 1. Twilio — DONE
 
-1. Go to https://twilio.com/try-twilio — sign up (free, no card needed)
-2. Verify your email, then verify phone number 708-203-1313
-3. Get a free trial phone number (Twilio assigns one)
-4. From the console dashboard, grab:
-   - **Account SID** (starts with AC...)
-   - **Auth Token**
-   - **Your Twilio number** (e.g., +1312XXXXXXX)
+Credentials are in Twilio console. Do not commit them to this repo.
 
 ## 2. Cloudflare Worker (notification endpoint) — 5 min
 
@@ -17,11 +11,11 @@ cd worker/
 npx wrangler login          # opens browser to auth
 npx wrangler deploy         # deploys the worker
 
-# Set secrets (paste when prompted):
+# Set secrets (paste when prompted — get values from Twilio console):
 npx wrangler secret put TWILIO_SID
 npx wrangler secret put TWILIO_AUTH_TOKEN
-npx wrangler secret put TWILIO_FROM       # your Twilio number, e.g. +13125551234
-npx wrangler secret put MIKE_PHONE        # +17082031313
+npx wrangler secret put TWILIO_MESSAGING_SID
+npx wrangler secret put MIKE_PHONE
 ```
 
 Worker URL will be: `https://csb-notify.<your-account>.workers.dev`

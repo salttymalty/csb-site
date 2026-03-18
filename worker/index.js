@@ -2,10 +2,10 @@
 // Receives form submissions, sends SMS to Mike, returns JSON
 //
 // Environment variables (set in Cloudflare dashboard):
-//   TWILIO_SID        — Twilio Account SID
-//   TWILIO_AUTH_TOKEN  — Twilio Auth Token
-//   TWILIO_FROM        — Twilio phone number (e.g., +1234567890)
-//   MIKE_PHONE         — Mike's phone number (e.g., +17082031313)
+//   TWILIO_SID              — Twilio Account SID
+//   TWILIO_AUTH_TOKEN        — Twilio Auth Token
+//   TWILIO_MESSAGING_SID    — Twilio MessagingService SID (MG...)
+//   MIKE_PHONE              — Mike's phone number (e.g., +17082031313)
 
 const PITD_LABELS = ['Chill', 'Some coordination', 'Wedding-level stress'];
 
@@ -51,7 +51,7 @@ export default {
         },
         body: new URLSearchParams({
           To: env.MIKE_PHONE,
-          From: env.TWILIO_FROM,
+          MessagingServiceSid: env.TWILIO_MESSAGING_SID,
           Body: msg,
         }).toString(),
       });
