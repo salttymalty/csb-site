@@ -2,7 +2,7 @@
 // Posts to Cloudflare Worker (SMS notification) + Supabase (data storage)
 
 // Configure after deploy:
-const WORKER_URL = ''; // e.g. https://csb-notify.garenhudson.workers.dev
+const WORKER_URL = 'https://csb-notify.garenhudson.workers.dev';
 const SUPABASE_URL = ''; // e.g. https://xxxxx.supabase.co
 const SUPABASE_ANON_KEY = ''; // public anon key
 
