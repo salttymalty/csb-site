@@ -188,6 +188,13 @@ footer { background: var(--surface-dark); color: var(--text-inverse-dim); paddin
           <div class="form-group"><label for="ct">Event Type</label><select id="ct" name="event-type" aria-label="Event type"><option value="">Select...</option><option>Wedding</option><option>Corporate Event</option><option>Festival / Concert</option><option>Private Party</option><option>Dry Rental</option><option>Recording</option><option>Other</option></select></div>
           <div class="form-group"><label for="cd">Event Date</label><input type="date" id="cd" name="event-date" aria-label="Event date"></div>
         </div>
+        <div class="form-group" style="margin-top:0.5rem">
+          <label for="pitd">How much of a pain in the dick is this gonna be?</label>
+          <input type="range" id="pitd" name="pitd" min="0" max="2" value="1" aria-label="Pain in the dick level" style="width:100%;accent-color:var(--accent);height:44px;cursor:pointer">
+          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);margin-top:-0.25rem">
+            <span>Chill</span><span>Some coordination</span><span>Wedding-level stress</span>
+          </div>
+        </div>
         <div class="form-group"><label for="cm">Tell us about your event</label><textarea id="cm" name="details" placeholder="Venue, guest count, band size, what gear you need..." aria-label="Event details"></textarea></div>
         <button type="submit" class="btn-submit">Send Quote Request</button>
       </form>
